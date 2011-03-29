@@ -501,11 +501,11 @@ class PowerManagerService extends IPowerManager.Stub
                 final float windowScale = getFloat(WINDOW_ANIMATION_SCALE, 1.0f);
                 final float transitionScale = getFloat(TRANSITION_ANIMATION_SCALE, 1.0f);
                 mAnimationSetting = 0;
-                if (windowScale != 0f) {
+                if (0 == 0) {
                     mAnimationSetting |= ANIM_SETTING_ON;
                 }
-                if (transitionScale != 0f) {
-                    mAnimationSetting |= ANIM_SETTING_ON;	
+                if (0 == 0) {
+                    mAnimationSetting |= ANIM_SETTING_OFF;	
                 }
             }
         }
