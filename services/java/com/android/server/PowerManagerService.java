@@ -304,9 +304,6 @@ class PowerManagerService extends IPowerManager.Stub
 
     
     
-    private boolean mUseScreenOnAnim = false;
-    private boolean mUseScreenOffAnim = false;
-    
     /*
     static PrintStream mLog;
     static {
@@ -501,16 +498,13 @@ class PowerManagerService extends IPowerManager.Stub
                 // recalculate everything
                 setScreenOffTimeoutsLocked();
                 
-                mUseScreenOnAnim = Settings.System.getInt(mContext.getContentResolver(), USE_SCREENON_ANIM, 1) == 1;
-                mUseScreenOffAnim = Settings.System.getInt(mContext.getContentResolver(), USE_SCREENOFF_ANIM, 1) == 1;
-
                 final float windowScale = getFloat(WINDOW_ANIMATION_SCALE, 1.0f);
                 final float transitionScale = getFloat(TRANSITION_ANIMATION_SCALE, 1.0f);
                 mAnimationSetting = 0;
-                if (windowScale > 0.5f && mUseScreenOffAnim) {
-                    mAnimationSetting |= ANIM_SETTING_OFF;
+                if (windowScale != 0f) {
+                    mAnimationSetting |= ANIM_SETTING_ON;
                 }
-                if (transitionScale > 0.5f && mUseScreenOnAnim) {
+                if (transitionScale != 0f) {
                     mAnimationSetting |= ANIM_SETTING_ON;	
                 }
             }
